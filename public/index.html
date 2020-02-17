@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Things To Do</title>
+  <script src="./js/bundle.js"></script>
+
+</head>
+
+<body>
+  <div id='app'>
+    <p>hello worlds hmm</p>
+    <h1>List Of Things That Need Done</h1>
+
+    <ul>
+      <li v-for="(item, index) in items" v-bind:class="item.priority ? 'high priority': 'low priority'">
+        <span> {{item.name}} </span>
+        <span v-if="item.priority">High Priority!</span>
+        <button v-if="!item.priority" v-on:click="changePriority(index)">Increase Priority</button>
+      </li>
+    </ul>
+
+    <form v-on:submit.prevent="saveNewItem">
+      <label for="new-item">New thing to do</label>
+      <input type="text" id="new-item" v-model="newItem"/>
+      <input type="submit" value="Save New Item"/>
+
+    </form>
+  </div>
+</body>
+</html>
